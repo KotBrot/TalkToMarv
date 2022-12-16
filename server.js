@@ -31,6 +31,10 @@ app.post("/transcription", bodyParser.urlencoded({ extended: true }), function (
     }).then(resp => res.send(resp))
 });
 
+app.get("/healthCheck", (req, res) => {
+    res.rend('OK')
+})
+
 app.listen(3000, function () {
     console.log("Listening on port 3000");
 });
