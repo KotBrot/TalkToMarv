@@ -1,0 +1,6 @@
+POST http://localhost:3000/transcription
+Content-Type: application/json
+
+{
+    "text": "Hi"
+}
