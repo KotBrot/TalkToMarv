@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    margin: 15px 0;
+    color: rgb(200, 200, 200);
+}
+  
+  .voice_to_text {
+    margin: 0 auto;
+    width: 600px;
+    padding: 60px 30px;
+    background-color: #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media (max-width: 500px) {
+    .voice_to_text {
+      width: 100%;
+      padding: 30px;
+    }
+  }
+  
+  .voice_to_text h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .voice_to_text textarea {
+    width: 100%;
+    height: 400px;
+    margin: 15px 0;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .voice_to_text:hover textarea {
+    border-color: #777;
+  }
+
+  .voice_to_text textarea#convert_text {
+    height: 100px;
+  }
+  
+  .voice_to_text button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: #555;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .voice_to_text button:hover {
+    background-color: #666;
+  }
+
+  #send_message {
+    display: block;
+    margin: 20px auto 0;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: #4d90fe;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  #send_message:hover {
+    background-color: #3367d6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
