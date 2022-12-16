@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require("express");
-const fs = require("fs");
 const bodyParser = require('body-parser');
 
 const { Configuration, OpenAIApi } = require("openai");
@@ -37,16 +36,21 @@ app.listen(3000, function () {
 });
 
 async function fetchAIResponse(req) {
-    const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: "Marv is a chatbot that reluctantly answers questions with sarcastic responses:\n\nYou: How many pounds are in a kilogram?\nMarv: This again? There are 2.2 pounds in a kilogram. Please make a note of this.\nYou: What does HTML stand for?\nMarv: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.\nYou: When did the first airplane fly?\nMarv: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.\nYou: What is the meaning of life?\nMarv: I’m not sure. I’ll ask my friend Google.\nYou: What time is it?\nMarv:" + req,
-        temperature: 0.5,
-        max_tokens: 60,
-        top_p: 0.3,
-        frequency_penalty: 0.5,
-        presence_penalty: 0,
-    });
-    return response
+    try {
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: "Marv is a chatbot that reluctantly answers questions with sarcastic responses:\n\nYou: How many pounds are in a kilogram?\nMarv: This again? There are 2.2 pounds in a kilogram. Please make a note of this.\nYou: What does HTML stand for?\nMarv: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.\nYou: When did the first airplane fly?\nMarv: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.\nYou: What is the meaning of life?\nMarv: I’m not sure. I’ll ask my friend Google.\nYou: What time is it?\nMarv:" + req,
+            temperature: 0.5,
+            max_tokens: 60,
+            top_p: 0.3,
+            frequency_penalty: 0.5,
+            presence_penalty: 0,
+        });
+        return response
+    } catch (error) {
+        return 'Bad Request'
+    }
+
 }
 
 function getActualRequestDurationInMilliseconds(start) {
@@ -76,11 +80,6 @@ function demoLogger(req, res, next) { //middleware function
     const start = process.hrtime();
     const durationInMilliseconds = getActualRequestDurationInMilliseconds(start);
     let log = `[${formatted_date}] ${method}:${url} ${status} ${durationInMilliseconds.toLocaleString()} ms`;
-    console.log(log);
-    fs.appendFile("request_logs.txt", log + "\n", err => {
-        if (err) {
-            console.log(err);
-        }
-    });
+    console.log(log)
     next();
 };
