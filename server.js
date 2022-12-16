@@ -29,8 +29,7 @@ app.post("/transcription", bodyParser.urlencoded({ extended: true }), function (
     fetchAIResponse(req.body.message).then(resp => {
         try {
             return resp.data.choices[0].text
-        }
-        catch(err) {
+        } catch(err) {
             return 'Bad Request'
         }
     }).then(resp => res.send(resp))
