@@ -27,7 +27,12 @@ app.get("/", function (req, res) {
 // Apply the body-parser middleware to the /transcription route
 app.post("/transcription", bodyParser.urlencoded({ extended: true }), function (req, res) {
     fetchAIResponse(req.body.message).then(resp => {
-        return resp.data.choices[0].text
+        try {
+            return resp.data.choices[0].text
+        }
+        except(err) {
+            return 'Bad Request'
+        }
     }).then(resp => res.send(resp))
 });
 
