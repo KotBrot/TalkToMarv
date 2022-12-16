@@ -32,7 +32,7 @@ app.post("/transcription", bodyParser.urlencoded({ extended: true }), function (
 });
 
 app.get("/healthCheck", (req, res) => {
-    res.rend('OK')
+    res.sendStatus(200)
 })
 
 app.listen(3000, function () {
