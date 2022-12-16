@@ -30,7 +30,7 @@ app.post("/transcription", bodyParser.urlencoded({ extended: true }), function (
         try {
             return resp.data.choices[0].text
         }
-        except(err) {
+        catch(err) {
             return 'Bad Request'
         }
     }).then(resp => res.send(resp))
