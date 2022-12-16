@@ -50,6 +50,7 @@ async function fetchAIResponse(req) {
             frequency_penalty: 0.5,
             presence_penalty: 0,
         });
+        console.log(response)
         return response
     } catch (error) {
         return 'Bad Request'
